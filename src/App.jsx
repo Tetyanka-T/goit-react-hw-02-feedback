@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Container from 'components/Container/Container';
 import Section from 'components/Section';
 import FeedbackOptions from 'components/FeedbackOptions';
 import Notification from 'components/Notification';
@@ -38,25 +39,27 @@ class App extends Component {
     const objKey = Object.keys(this.state);
     return (
       <div>
-        <Section title="Please leave feedback">
-          <FeedbackOptions
-            options={objKey}
-            onLeaveFeedback={this.onLeaveFeedback}
-          />
-        </Section>
-        {total === 0 ? (
-          <Notification message="No feedback given" />
-        ) : (
-          <Section title="Statistics">
-            <Statistics
-              good={good}
-              neutral={neutral}
-              bad={bad}
-              total={total}
-              positivePercentage={positivePercentage}
+        <Container>
+          <Section title="Please leave feedback">
+            <FeedbackOptions
+              options={objKey}
+              onLeaveFeedback={this.onLeaveFeedback}
             />
           </Section>
-        )}
+          {total === 0 ? (
+            <Notification message="No feedback given" />
+          ) : (
+            <Section title="Statistics">
+              <Statistics
+                good={good}
+                neutral={neutral}
+                bad={bad}
+                total={total}
+                positivePercentage={positivePercentage}
+              />
+            </Section>
+          )}
+        </Container>
       </div>
     );
   }
